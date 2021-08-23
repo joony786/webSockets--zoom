@@ -7,17 +7,17 @@ html(lang="en")
         <link rel="stylesheet" href="https://unpkg.com/mvp.css">
         title junaid
     body 
-        
         header 
             h1 Junaid 
         main
         div#welcome
-            h1
+            h1 Enter name to join
             form
                 input(type="text", placeholder='Enter a room',required)
                 button enter a room
             form#room
                 input(type="text", placeholder='send a msg',required)
+                ul
                 button send
         script(src='socket.io/socket.io.js')
         script(src='/public/js/app.js')

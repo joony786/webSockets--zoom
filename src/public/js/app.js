@@ -25,3 +25,14 @@ function handleEnterRoom(event) {
 
 
 form.addEventListener('submit',handleEnterRoom)
+
+
+function sendMessage(msg) {
+    const ul = room.querySelector('ul')
+    const li = document.createElement('li')
+    li.innerText = msg
+    ul.appendChild(li)
+}
+
+
+socket.on('welcome',sendMessage('someone joined !'))
