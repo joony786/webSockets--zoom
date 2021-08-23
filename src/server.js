@@ -1,6 +1,7 @@
 import express from 'express';
 import http from 'http';
 import WebSocket from 'ws';
+import socketIo from 'socket.io'
 
 const app = express();
 
@@ -12,26 +13,13 @@ app.get('/*',(_,res)=>res.redirect('/'));
 
 const handelListeners = () => console.log(`list on https://3000`);
 
-const server = http.createServer(app);
-const wsServer = new WebSocket.Server({server});
+const httpServer = http.createServer(app);
 
-let Sockets = []
+const wsServer = socketIo(httpServer)
+
 wsServer.on('connection',(socket)=>{
-    Sockets.push(socket);
-    console.log('connected to browser');
-    socket['nickname'] = 'Anno';
-    socket.on('message',(data,isBinary)=>{
-        const msg = isBinary ? data : data.toString();
-        const message = JSON.parse(msg)
-        switch(message.type){
-            case 'new_message':
-                Sockets.forEach((aSocket)=>aSocket.send(`${socket.nickname} : ${message.payload}`));
-            case 'nick_name':
-               socket['nickname'] = message.payload;
-        }
-    })
-    socket.on('close',()=>{
-        console.log(`disconnected from browser`);
-    })
-});
-server.listen(3000,handelListeners);
+    console.log(socket);
+})
+
+
+httpServer.listen(3000,handelListeners);
