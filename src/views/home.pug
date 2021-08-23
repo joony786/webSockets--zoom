@@ -5,15 +5,18 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         <link rel="stylesheet" href="https://unpkg.com/mvp.css">
-       
         title junaid
     body 
         
         header 
             h1 Junaid 
-        main 
+        main
+        form#nickname
+            input(type="text", placeholder='choose a nickname', required)
+            button save
+             
         ul 
-        form
+        form#message
             input(type="text", placeholder='type your message', required)
             button send 
         script(src='/public/js/app.js')

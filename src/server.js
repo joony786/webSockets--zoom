@@ -17,15 +17,21 @@ const wsServer = new WebSocket.Server({server});
 
 let Sockets = []
 wsServer.on('connection',(socket)=>{
-    Sockets.push(socket)
+    Sockets.push(socket);
     console.log('connected to browser');
+    socket['nickname'] = 'Anno';
+    socket.on('message',(data,isBinary)=>{
+        const msg = isBinary ? data : data.toString();
+        const message = JSON.parse(msg)
+        switch(message.type){
+            case 'new_message':
+                Sockets.forEach((aSocket)=>aSocket.send(`${socket.nickname} : ${message.payload}`));
+            case 'nick_name':
+               socket['nickname'] = message.payload;
+        }
+    })
     socket.on('close',()=>{
         console.log(`disconnected from browser`);
-    })
-    
-    socket.on('message',(data,isBinary)=>{
-        const message = isBinary ? data : data.toString()
-        Sockets.forEach((aSocket)=>aSocket.send(message))
     })
 });
 server.listen(3000,handelListeners);
