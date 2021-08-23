@@ -12,7 +12,7 @@ app.get('/*',(_,res)=>res.redirect('/'));
 
 const handelListeners = () => console.log(`list on https://3000`);
 
-const server = http.createServer(app);
-const wsServer = new WebSocket.Server({server});
+const Server = http.createServer(app);
+const wsServer = new WebSocket.Server({Server});
 
-server.listen(3000,handelListeners);
+Server.listen(3000,handelListeners);
