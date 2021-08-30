@@ -1,3 +1,3 @@
 # Zoom Clone
 
-using NodeJs, wevRtc and webSockets.
+using NodeJs, webRtc and webSockets.
