@@ -1,6 +1,7 @@
 import http from 'http';
 import express from 'express';
-import socketIo from 'socket.io'
+import {Server} from 'socket.io'
+const { instrument } = require("@socket.io/admin-ui");
 
 const app = express();
 
@@ -14,7 +15,16 @@ const handleListeners = () => console.log(`list on https://3000`);
 
 const httpServer = http.createServer(app);
 
-const wsServer = socketIo(httpServer);
+const wsServer = new Server(httpServer, {
+    cors: {
+        origin: ["https://admin.socket.io"],
+        credentials: true
+    }
+});
+
+instrument(wsServer, {
+    auth: false
+});
 
 function publicRooms() {
     const {sockets: {adapter: {rooms, sids}}} = wsServer
