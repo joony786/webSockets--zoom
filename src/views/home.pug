@@ -6,17 +6,20 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         <link rel="stylesheet" href="https://unpkg.com/mvp.css">
         title junaid
-    body 
-        
-        header 
-            h1 Junaid 
+    body
+        header
+            h1 Junaid
         main
-        form#nickname
-            input(type="text", placeholder='choose a nickname', required)
-            button save
-             
-        ul 
-        form#message
-            input(type="text", placeholder='type your message', required)
-            button send 
+        div#welcome
+            h1 Enter name to join
+            form
+                input(type="text", placeholder='Enter a room', required)
+                button enter a room
+                h4 open Rooms:
+                ul
+            form#room
+                input(type="text", placeholder='send a msg', required)
+                ul
+                button send
+        script(src='socket.io/socket.io.js')
         script(src='/public/js/app.js')
