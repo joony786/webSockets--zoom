@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+        title junaid
+    body
+        header
+            h1 Junaid
+        main
+        div#welcome
+            h1 Enter name to join
+            form
+                input(type="text", placeholder='Enter a room', required)
+                button enter a room
+                h4 open Rooms:
+                ul
+            form#room
+                input(type="text", placeholder='send a msg', required)
+                ul
+                button send
+        script(src='socket.io/socket.io.js')
+        script(src='/public/js/app.js')

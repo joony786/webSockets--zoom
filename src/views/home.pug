@@ -8,18 +8,12 @@ html(lang="en")
         title junaid
     body
         header
-            h1 Junaid
+            h1 Video call
         main
-        div#welcome
-            h1 Enter name to join
-            form
-                input(type="text", placeholder='Enter a room', required)
-                button enter a room
-                h4 open Rooms:
-                ul
-            form#room
-                input(type="text", placeholder='send a msg', required)
-                ul
-                button send
-        script(src='socket.io/socket.io.js')
+            div#mystream
+                video#myFace(autoplay, playsinline, muted, width="400", height="400")
+                button#mute Mute
+                button#camera Turn Camera Off
+                select#cameras
+        //script(src='socket.io/socket.io.js')
         script(src='/public/js/app.js')
